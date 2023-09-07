@@ -211,7 +211,7 @@ namespace BreweryAPI.Test
                         Name = $"Beer {beerId}",
                         Price = 5,
                         BeerType = BeerType.Stout,
-                        BreweryId = Guid.NewGuid(),                    
+                        BreweryId = Guid.NewGuid(),
                     }
                 });
             }
