@@ -2,15 +2,14 @@
 using BreweryAPI.BLL.DataTransferObjects.Beer;
 using BreweryAPI.DAL.Entities;
 
-namespace BreweryAPI.BLL.Mapping
+namespace BreweryAPI.BLL.Mapping;
+
+public class MappingProfile : Profile
 {
-    public class MappingProfile : Profile
+    public MappingProfile()
     {
-        public MappingProfile()
-        {
-            CreateMap<Beer, BeerDto>();
-            CreateMap<BeerCreateDto, Beer>();
-            CreateMap<BeerUpdateDto, Beer>();
-        }
+        CreateMap<Beer, BeerDto>();
+        CreateMap<BeerCreateDto, Beer>();
+        CreateMap<BeerUpdateDto, Beer>();
     }
 }

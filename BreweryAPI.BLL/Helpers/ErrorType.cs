@@ -1,10 +1,9 @@
-﻿namespace BreweryAPI.BLL.Helpers
+﻿namespace BreweryAPI.BLL.Helpers;
+
+public enum ErrorType
 {
-    public enum ErrorType
-    {
-        None,
-        Conflict,
-        NotFound,
-        InvalidParameter,
-    }
+    None,
+    Conflict,
+    NotFound,
+    InvalidParameter,
 }

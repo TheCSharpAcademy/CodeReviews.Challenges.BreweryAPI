@@ -1,15 +1,14 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace BreweryAPI.DAL.Entities
-{
-    [Table("WholesalerBeers")]
-    public class WholesalerBeer
-    {
-        public Guid Id { get; set; }
-        public Guid WholesalerId { get; set; }
-        public Guid BeerId { get; set; }
-        public int StockQuantity { get; set; }
+namespace BreweryAPI.DAL.Entities;
 
-        public Beer Beer { get; set; } = null!;
-    }
+[Table("WholesalerBeers")]
+public class WholesalerBeer
+{
+    public Guid Id { get; set; }
+    public Guid WholesalerId { get; set; }
+    public Guid BeerId { get; set; }
+    public int StockQuantity { get; set; }
+
+    public Beer Beer { get; set; } = null!;
 }

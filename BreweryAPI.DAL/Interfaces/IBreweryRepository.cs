@@ -1,11 +1,10 @@
 ﻿using BreweryAPI.DAL.Entities;
 
-namespace BreweryAPI.DAL.Interfaces
+namespace BreweryAPI.DAL.Interfaces;
+
+public interface IBreweryRepository
 {
-    public interface IBreweryRepository
-    {
-        Task<Brewery?> GetBreweryByIdAsync(Guid breweryId);
-        Task AddSaleAsync(BrewerySale sale);
-        Task SaveChangesAsync();
-    }
+    Task<Brewery?> GetBreweryByIdAsync(Guid breweryId);
+    Task AddSaleAsync(BrewerySale sale);
+    Task SaveChangesAsync();
 }

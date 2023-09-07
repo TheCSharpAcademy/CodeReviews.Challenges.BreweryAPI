@@ -1,10 +1,9 @@
 ﻿using BreweryAPI.BLL.DataTransferObjects.Quote;
 
-namespace BreweryAPI.BLL.Interfaces
+namespace BreweryAPI.BLL.Interfaces;
+
+public interface IDiscountService
 {
-    public interface IDiscountService
-    {
-        decimal GetDiscountPercent(List<QuoteResponseItemDto> quoteItems);
-        decimal GetDiscountPrice(decimal discountPercent, List<QuoteResponseItemDto> quoteItems);
-    }
+    decimal GetDiscountPercent(List<QuoteResponseItemDto> quoteItems);
+    decimal GetDiscountPrice(decimal discountPercent, List<QuoteResponseItemDto> quoteItems);
 }
