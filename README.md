@@ -173,11 +173,3 @@ To set up and run the BreweryAPI project, follow these steps:
 4. Run the database migrations to create the required tables.
 5. Build and run the application using `dotnet run`.
 6. Access the API endpoints using the Swagger UI, a tool like [Postman](https://www.postman.com/), or through your preferred client.
-
-## Contributing
-
-Contributions to the BreweryAPI project are welcome! If you have improvements, bug fixes, or new features to suggest, please create a pull request with a clear description of the changes.
-
-## License
-
-The BreweryAPI project is open-source and available under the [MIT License](LICENSE). You are free to use, modify, and distribute it according to the terms of the license.
