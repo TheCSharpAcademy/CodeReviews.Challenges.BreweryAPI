@@ -16,4 +16,9 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BreweryAPI.BLL\BreweryAPI.BLL.csproj" />
+    <ProjectReference Include="..\BreweryAPI.DAL\BreweryAPI.DAL.csproj" />
+  </ItemGroup>
+
 </Project>
