@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BreweryAPI.Controllers
 {
-	[Route("api/[controller]")]
+	[Route("Beer")]
 	[ApiController]
 	public class BeerController : ControllerBase
 	{
@@ -48,8 +48,6 @@ namespace BreweryAPI.Controllers
 
 		}
 
-
-
 		// GET: api/Beer/5
 		[HttpGet("{id}")]
 		public async Task<ActionResult<BeerModel>> GetBeerModel(int id)
@@ -81,7 +79,7 @@ namespace BreweryAPI.Controllers
 			var existingBrewery = await _context.Breweries.FindAsync(updatedBeerModel.BrewerId);
 			if (existingBrewery == null)
 			{
-				return NotFound("Brewery not found.");
+				return NotFound("That brewery doesn't exist");
 			}
 
 			updatedBeerModel.Brewer = existingBrewery;
@@ -153,7 +151,7 @@ namespace BreweryAPI.Controllers
 
 		private bool BeerModelExists(int id)
 		{
-			return (_context.Beers?.Any(e => e.BeerId == id)).GetValueOrDefault();
+			return (_context.Beers?.Any(b => b.BeerId == id)).GetValueOrDefault();
 		}
 	}
 }
