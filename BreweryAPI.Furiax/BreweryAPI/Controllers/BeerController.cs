@@ -25,6 +25,7 @@ namespace BreweryAPI.Controllers
 			}
 			var beersByBrewer = await _context.Beers
 				.Where(beer => beer.BrewerId == brewerId)
+				.Include(b => b.Brewer)
 				.ToListAsync();
 
 			if (beersByBrewer == null || beersByBrewer.Count == 0)
@@ -43,7 +44,8 @@ namespace BreweryAPI.Controllers
 			{
 				return NotFound();
 			}
-			return await _context.Beers.ToListAsync();
+			return await _context.Beers.Include(b => b.Brewer).ToListAsync();
+
 		}
 
 
@@ -56,7 +58,7 @@ namespace BreweryAPI.Controllers
 			{
 				return NotFound();
 			}
-			var beerModel = await _context.Beers.FindAsync(id);
+			var beerModel = await _context.Beers.Include(b => b.Brewer).FirstOrDefaultAsync(b => b.BeerId == id);
 
 			if (beerModel == null)
 			{
@@ -69,14 +71,22 @@ namespace BreweryAPI.Controllers
 		// PUT: api/Beer/5
 		// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
 		[HttpPut("{id}")]
-		public async Task<IActionResult> PutBeerModel(int id, BeerModel beerModel)
+		public async Task<IActionResult> PutBeerModel(int id, BeerModel updatedBeerModel)
 		{
-			if (id != beerModel.BeerId)
+			if (id != updatedBeerModel.BeerId)
 			{
 				return BadRequest();
 			}
 
-			_context.Entry(beerModel).State = EntityState.Modified;
+			var existingBrewery = await _context.Breweries.FindAsync(updatedBeerModel.BrewerId);
+			if (existingBrewery == null)
+			{
+				return NotFound("Brewery not found.");
+			}
+
+			updatedBeerModel.Brewer = existingBrewery;
+
+			_context.Entry(updatedBeerModel).State = EntityState.Modified;
 
 			try
 			{
@@ -102,10 +112,19 @@ namespace BreweryAPI.Controllers
 		[HttpPost]
 		public async Task<ActionResult<BeerModel>> PostBeerModel(BeerModel beerModel)
 		{
-			if (_context.Beers == null)
+			if (_context.Beers == null || _context.Breweries == null)
 			{
-				return Problem("Entity set 'BreweryContext.Beers'  is null.");
+				return Problem("Entity set 'BreweryContext.Beers' or 'BreweryContext.Breweries' is null.");
 			}
+
+			var existingBrewery = await _context.Breweries.FindAsync(beerModel.BrewerId);
+			if (existingBrewery == null)
+			{
+				return NotFound("Brewery not found.");
+			}
+
+			beerModel.Brewer = existingBrewery;
+
 			_context.Beers.Add(beerModel);
 			await _context.SaveChangesAsync();
 
