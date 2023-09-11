@@ -72,11 +72,22 @@ namespace BreweryAPI
 				modelBuilder.Entity<WholesalerModel>().HasData(
 				new WholesalerModel { WholesalerId = 1, Name = "Colruyt" },
 				new WholesalerModel { WholesalerId = 2, Name = "Prik & Tik" },
-				new WholesalerModel { WholesalerId = 3, Name = "Van Callenberge" },
+				new WholesalerModel { WholesalerId = 3, Name = "Drankenhal Van Callenberge" },
 				new WholesalerModel { WholesalerId = 4, Name = "Dranken Van Remoortel" },
 				new WholesalerModel { WholesalerId = 5, Name = "Drinkshop Dullaert" },
 				new WholesalerModel { WholesalerId = 6, Name = "Bierland" }
 				);
+
+				modelBuilder.Entity<SaleModel>().HasData(
+					new SaleModel { SaleId = 1, WholesalerId = 3, BeerId = 1, Quantity = 240 },
+					new SaleModel { SaleId = 2, WholesalerId = 3, BeerId = 18, Quantity = 240 },
+					new SaleModel { SaleId = 3, WholesalerId = 3, BeerId = 33, Quantity = 24 },
+					new SaleModel { SaleId = 4, WholesalerId = 3, BeerId = 28, Quantity = 120 },
+					new SaleModel { SaleId = 5, WholesalerId = 3, BeerId = 22, Quantity = 36 },
+					new SaleModel { SaleId = 6, WholesalerId = 3, BeerId = 11, Quantity = 200 },
+					new SaleModel { SaleId = 7, WholesalerId = 3, BeerId = 31, Quantity = 180 },
+					new SaleModel { SaleId = 8, WholesalerId = 3, BeerId = 2, Quantity = 96 }
+					);
 			}
 			catch (Exception ex)
 			{
