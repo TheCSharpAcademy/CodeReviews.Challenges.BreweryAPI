@@ -11,7 +11,6 @@ namespace BreweryAPI
 		public DbSet<BeerModel> Beers { get; set; }
 		public DbSet<WholesalerModel> Wholesalers { get; set; }
 		public DbSet<SaleModel> Sales { get; set; }
-		public DbSet<QuoteModel> Quotes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
