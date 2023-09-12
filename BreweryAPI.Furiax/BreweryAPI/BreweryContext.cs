@@ -13,7 +13,7 @@ namespace BreweryAPI
 		public DbSet<SaleModel> Sales { get; set; }
 		public DbSet<QuoteModel> Quotes { get; set; }
 
-		protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
 			base.OnModelCreating(modelBuilder);
 

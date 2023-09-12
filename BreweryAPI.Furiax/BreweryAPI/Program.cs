@@ -33,8 +33,6 @@ using (var scope = app.Services.CreateScope())
 	dbContext.CreateDatabase();
 }
 
-
-
 app.MapControllers();
 
 app.Run();
