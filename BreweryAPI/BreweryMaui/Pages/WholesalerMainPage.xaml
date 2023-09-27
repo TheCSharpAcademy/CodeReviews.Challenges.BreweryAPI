@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BreweryMaui.Pages.WholesalerMainPage"
+             Title="WholesalerMainPage"
+             BackgroundImageSource="beerbackground.jpg">
+
+    <ScrollView>
+
+        <Grid
+            ColumnDefinitions="*, *, *"
+            RowDefinitions="*, *, *, *, *, *"
+            Padding="40"
+            RowSpacing="20"
+            VerticalOptions="Start">
+
+            <Label
+                Grid.Row="0"
+                Grid.ColumnSpan="3"
+                TextColor="white"
+                FontAttributes="Bold"
+                FontSize="25"
+                Text="Select your wholesaler or register a new wholesaler to proceed!"
+                x:Name="MainLabel"
+                HorizontalOptions="Start"/>
+            <Entry
+                Grid.Row="2"
+                Grid.Column="0"
+                HeightRequest="40"
+                BackgroundColor="White"
+                FontSize="20"
+                Text="Wholesaler Name"
+                x:Name="CreateWholesalerNameInput"/>
+            <Entry
+                Grid.Row="2"
+                Grid.Column="1"
+                HeightRequest="40"
+                BackgroundColor="White"
+                FontSize="20"
+                Text="Wholesaler Location"
+                x:Name="CreateWholesalerLocationInput"/>
+            <Button
+                Grid.Row="2"
+                Grid.Column="2"
+                WidthRequest="200"
+                HeightRequest="40"
+                x:Name="CreateWholesaler"
+                Text="Register a new Wholesaler"
+                Clicked="OnWholesalerCreate"
+                HorizontalOptions="Center"/>
+            <Label
+                Grid.Row="1"
+                Grid.ColumnSpan="2"
+                TextColor="PaleVioletRed"
+                FontSize="25"
+                x:Name="WholesalerWarningLabel"
+                VerticalOptions="Start"
+                HorizontalOptions="Center"/>
+            <Entry
+                Grid.Row="3"
+                Grid.Column="0"
+                HeightRequest="40"
+                BackgroundColor="white"
+                FontSize="20"
+                Text="Wholesaler Name"
+                x:Name="SelectWholesalerByNameInput"/>
+            <Button
+                Grid.Row="3"
+                Grid.Column="2"
+                HeightRequest="40"
+                WidthRequest="200"
+                x:Name="Select"
+                Text="Select your Wholesaler"
+                Clicked="OnWholesalerSelect"
+                HorizontalOptions="Center"/>
+
+            <Button
+                Grid.Row="4"
+                Grid.Column="0"
+                HorizontalOptions="Start"
+                x:Name="ShowWholesalersButton"
+                Text="Show Wholesalers"
+                HeightRequest="40"
+                Clicked="OnShowWholesalers"/>
+
+            <ListView
+                Grid.Row="5"
+                Grid.Column="0"
+                x:Name="WholesalersListView"
+                ItemsSource="{Binding Wholesalers}"
+                IsVisible="False"
+                BackgroundColor="White">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding WholesalerName}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </ScrollView>
+
+</ContentPage>

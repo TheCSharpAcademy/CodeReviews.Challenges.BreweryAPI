@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BreweryMaui.MainPage"
+             BackgroundImageSource="beerbackground.jpg">
+
+    <ContentView>
+        <VerticalStackLayout
+            Padding="50"
+            Spacing="50">
+
+            <Label 
+                Text="Brewery Managment App"
+                HorizontalOptions="Center"
+                FontSize="30"
+                TextColor="White"/>
+            <Label 
+                Text="What are you:"
+                HorizontalOptions="Center"
+                FontSize="30"
+                TextColor="White"/>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                
+                <Button Grid.Column="1"
+                        Text="Brewery"
+                        Clicked="OnBreweryPage"
+                        FontSize="20"/>
+                <Button Grid.Column="2"
+                        Text="Wholesaler"
+                        Clicked="OnWholesalerPage"
+                        FontSize="20"/>
+            </Grid>
+
+        </VerticalStackLayout>
+    </ContentView>
+
+</ContentPage>

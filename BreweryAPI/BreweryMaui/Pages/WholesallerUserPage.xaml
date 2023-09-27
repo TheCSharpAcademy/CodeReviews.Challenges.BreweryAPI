@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BreweryMaui.Pages.WholesallerUserPage"
+             Title="WholesallerUserPage"
+             BackgroundImageSource="beerbackground.jpg">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30">
+
+            <Grid
+              ColumnDefinitions="*, *"
+              RowDefinitions="*, *"
+              ColumnSpacing="-300"
+              RowSpacing="20">  
+                <Label
+                  Grid.ColumnSpan="1"
+                  Grid.Row="0"
+                  Text="Wholesaler User Page"
+                  VerticalOptions="Center"
+                  TextColor="White"
+                  FontAttributes="Bold"
+                  FontSize="30"
+                  HorizontalOptions="Fill"/>
+                <Button
+                    x:Name="LogOut"
+                    IsVisible="true"
+                    Text="Log out"
+                    FontSize="30"
+                    BackgroundColor="ForestGreen"
+                    HorizontalOptions ="End"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Clicked="OnLogOut" />
+                <Label
+                      Grid.Row="1"
+                      Grid.Column="0"
+                      FontAttributes="Italic"
+                      WidthRequest="300"
+                      FontSize="20"
+                      TextColor="White"
+                      HorizontalOptions="Start"
+                      x:Name="tagWholesalerName"/>
+                <Label
+                      Grid.Row="1"
+                      Grid.Column="1"
+                      FontAttributes="Italic"
+                      WidthRequest="300"
+                      FontSize="20"
+                      TextColor="White"
+                      HorizontalOptions="Start"
+                      x:Name="tagWholesalerLocation"/>
+                <Line 
+                      Grid.Row="0"
+                      X1="0"
+                      Y1="0"
+                      X2="1000"
+                      Y2="0"
+                      Stroke="white" />
+                <Line 
+                      Grid.Row="1"
+                      X1="0"
+                      Y1="0"
+                      X2="1000"
+                      Y2="0"
+                      Stroke="white" />
+            </Grid>
+
+            <Grid
+                ColumnDefinitions="*, *, *"
+                RowDefinitions="*, *, *, *, *"
+                Padding="30"
+                RowSpacing="20" >
+                <Label
+                    Grid.Row="0"
+                    Grid.ColumnSpan="4"
+                    FontSize="30"
+                    TextColor="PaleVioletRed"
+                    x:Name="WholesalerWarningLabel"
+                    VerticalOptions="Start"
+                    HorizontalOptions="Center"/>
+                <Button
+                    x:Name="updateWholesaleryBtn"
+                    Text="Update Wholesaler"
+                    FontSize="20"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Clicked="OnUpdateWholesaler"/>
+                <Entry
+                    IsVisible="False"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    BackgroundColor="White"
+                    TextColor="Black"
+                    FontSize="20"
+                    HeightRequest="40"
+                    Text="Wholesaler Name"
+                    x:Name="UpdateWholesalerNameEntry"/>
+                <Entry
+                    IsVisible="False"
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    HeightRequest="40"
+                    BackgroundColor="white"
+                    TextColor="Black"
+                    FontSize="20"
+                    Text="Wholesaler Location"
+                    x:Name="UpdateWholesalerLocationEntry"/>
+                <Button
+                    x:Name="deleteWholesalerBtn"
+                    IsVisible="true"
+                    Text="Delete Wholesaler"
+                    FontSize="20"
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Clicked="OnDeleteWholesaler"/>
+                <Label
+                    Grid.Row="2"
+                    Grid.ColumnSpan="1"
+                    IsVisible="false"
+                    x:Name="deleteWholesalerQuestionLabel"
+                    Text="Are you sure you want to delete wholesaler?"
+                    VerticalOptions="Center"
+                    FontSize="20"
+                    TextColor="White"
+                    HorizontalOptions="Center"/>
+                <Button
+                    x:Name="deleteWholesalerYesBtn"
+                    BackgroundColor="Green"
+                    IsVisible="false"
+                    Text="Yes"
+                    FontSize="20"
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Clicked="OnWholesalerConfirmDelete"/>
+                <Button
+                    x:Name="deleteWholesalerNoBtn"
+                    BackgroundColor="Red"
+                    IsVisible="false"
+                    FontSize="20"
+                    Text="No"
+                    Grid.Row="2"
+                    Grid.Column="2"
+                    Clicked="OnWholesalerAbortDelete"/>
+                <Button
+                   x:Name="OrderBeerShipment"
+                   TextColor="White"
+                   Text="Order Shipment of Beer"
+                   Grid.Row="3"
+                   Grid.Column="0"
+                   FontSize="20"
+                   Clicked="OnShowBeersToOrder"/>
+                <Button
+                   x:Name="ShowBeerShipments"
+                   TextColor="White"
+                   FontSize="20"
+                   Text="Show Beer Shipments"
+                   Grid.Row="3"
+                   Grid.Column="1"
+                   Clicked="OnShowBeersShipments"/>
+                <Button
+                   x:Name="ShowInventoryBtn"
+                   TextColor="White"
+                   FontSize="20"
+                   Text="Show Inventory"
+                   Grid.Row="4"
+                   Grid.Column="0"
+                   Clicked="OnShowInventory"/>
+                <Button
+                   x:Name="ShowQuotesBtn"
+                   TextColor="White"
+                   FontSize="20"
+                   Text="Show Quotes"
+                   Grid.Row="4"
+                   Grid.Column="1"
+                   Clicked="OnShowQuotes"/>
+                <Button
+                   x:Name="CreateQuoteBtn"
+                   TextColor="White"
+                   FontSize="20"
+                   Text="Create Quote"
+                   Grid.Row="4"
+                   Grid.Column="2"
+                   Clicked="OnCreateQuote"/>
+            </Grid>
+
+            <Grid
+                  x:Name="ShipmentToCreateGrid"   
+                  ColumnDefinitions="*, *, *, *, *, *"
+                  RowDefinitions="*, *"
+                  IsVisible="false"
+                  Padding="30"
+                  BackgroundColor="Beige">
+
+                <Label Text="BeerId" FontSize="20" HorizontalOptions="Center" Grid.Column="0" Grid.Row="0"/>
+                <Label Text="WholesalerId" FontSize="20" HorizontalOptions="Center" Grid.Column="1" Grid.Row="0"/>
+                <Label Text="Quantity" FontSize="20" HorizontalOptions="Center" Grid.Column="2" Grid.Row="0"/>
+                <Label Text="Total Price" FontSize="20" HorizontalOptions="Center" Grid.Column="3" Grid.Row="0"/>
+
+                <Label x:Name="BeerIdOfBeerToOrder" FontSize="20" HorizontalOptions="Center" Text="" Grid.Column="0" Grid.Row="1"/>
+                <Label x:Name="WolesalerIdOfOrder" FontSize="20" HorizontalOptions="Center" Text="" Grid.Column="1" Grid.Row="1"/>
+                <Entry x:Name="QuantityOfOrder" FontSize="20" HorizontalOptions="Center" BackgroundColor="Snow" Text="" Grid.Column="2" Grid.Row="1" TextChanged="AdjustBeerTotalPrice"/>
+                <Label x:Name="TotalPriceOfOrder" FontSize="20" HorizontalOptions="Center" IsEnabled="False" Text="" Grid.Column="3" Grid.Row="1"/>
+                <Button x:Name="ConfirmOrderButton" FontSize="20" Text="Confirm Order" Grid.Column="4" Grid.Row="1" Clicked="OnConfirmOrder"/>
+                <Button x:Name="CancelOrderButton" FontSize="20" Text="Cancel Order" Grid.Column="5" Grid.Row="1" Clicked="OnCancelOrder"/>
+            </Grid>
+            <Grid 
+                  x:Name="AllBeersListHeader"   
+                  ColumnDefinitions="*, *, *, *, *, *"
+                  RowDefinitions="*, *"
+                  IsVisible="false"
+                  Padding="30">
+                <Label Grid.Column="0" TextColor="white" Grid.Row="1" Text="BeerId" FontSize="25" HorizontalOptions="Center"/>
+                <Label Grid.Column="1" TextColor="white" Grid.Row="1" Text="BeerName" FontSize="25" HorizontalOptions="Center"/>
+                <Label Grid.Column="2" TextColor="white"  Grid.Row="1" Text="Price" FontSize="25" HorizontalOptions="Center"/>
+                <Label Grid.Column="3" TextColor="white"  Grid.Row="1" Text="BreweryId" FontSize="25" HorizontalOptions="Center"/>
+                <Label Grid.ColumnSpan = "4" TextColor="white" Grid.Row="0" Text="Order From List of Beers" FontSize="25" HorizontalOptions="Center" FontAttributes="Bold"/>
+            </Grid>
+            <CollectionView 
+                 IsVisible="false"
+                 x:Name="AllBeersListData"> 
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid ColumnDefinitions="*, *, *, *, *, *"
+                               RowDefinitions="50"
+                               RowSpacing="1000">
+
+                            <Label Grid.Column="0" TextColor="White" FontSize="25" HorizontalOptions="Center" Text="{Binding BeerId, StringFormat='{0:d}'}" x:Name="{Binding BeerId, StringFormat='LabelBeerId{0:d}'}"/>
+                            <Label Grid.Column="1" TextColor="White" Text="{Binding BeerName}" HorizontalOptions="Center"/>
+                            <Label Grid.Column="2" TextColor="White" FontSize="25" Text="{Binding Price}" HorizontalOptions="Center" />
+                            <Label Grid.Column="3" TextColor="White" FontSize="25" Text="{Binding BreweryId}" HorizontalOptions="Center"/>
+                            <Button
+                               x:Name="OrderBeer"
+                               BackgroundColor="White"
+                               TextColor="Black"
+                               FontSize="20"
+                               Text="Order"
+                               Grid.Column="4"
+                               Clicked="OnOrderBeer"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Grid 
+              x:Name="BeerOrdersListHeader"   
+              ColumnDefinitions="*, *, *, *, *, *, *"
+              RowDefinitions="*, *"
+              IsVisible="false">
+                <Label Grid.ColumnSpan="5" TextColor="White" FontAttributes="Bold" Grid.Row="0" Text="Beer Shipments" FontSize="25" HorizontalOptions="Center"/>
+                <Label Grid.Column="0" TextColor="White" Grid.Row="1" Text="SalesID" FontSize="20" HorizontalOptions="Center"/>
+                <Label Grid.Column="1" TextColor="White" Grid.Row="1" Text="WholesalerID" FontSize="20" HorizontalOptions="Center"/>
+                <Label Grid.Column="2" TextColor="White" Grid.Row="1" Text="BeerID" FontSize="20" HorizontalOptions="Center"/>
+                <Label Grid.Column="3" TextColor="White" Grid.Row="1" Text="Quantity" FontSize="20" HorizontalOptions="Center"/>
+                <Label Grid.Column="4" TextColor="White" Grid.Row="1" Text="TotalPrice" FontSize="20" HorizontalOptions="Center"/>
+            </Grid>
+            <CollectionView 
+                  IsVisible="false"
+                  x:Name="BeerOrdersListData">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid ColumnDefinitions="*, *, *, *, *, *, *"
+                            RowDefinitions="50">
+
+                            <Label Grid.Column="0" TextColor="White" Text="{Binding SalesId}" FontSize="25" HorizontalOptions="Center"/>
+                            <Label Grid.Column="1" TextColor="White" Text="{Binding WholeSalerId}" FontSize="25" HorizontalOptions="Center"/>
+                            <Label Grid.Column="2" TextColor="White" Text="{Binding BeerId}" FontSize="25" HorizontalOptions="Center"/>
+                            <Label Grid.Column="3" TextColor="White" Text="{Binding Quantity}" FontSize="25" HorizontalOptions="Center"/>
+                            <Label Grid.Column="4" TextColor="White" Text="{Binding TotalPrice}"  FontSize="25" HorizontalOptions="Center"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Grid
+                  x:Name="QuoteToCreateGrid"   
+                  ColumnDefinitions="*, *, *, *, *, *, *"
+                  RowDefinitions="*, *"
+                  IsVisible="false"
+                  Padding="30"
+                  BackgroundColor="Beige">
+
+                <Label Text="ClientName" FontSize="20" HorizontalOptions="Center"  Grid.Column="0" Grid.Row="0"/>
+                <Label Text="WholesalerId" FontSize="20" HorizontalOptions="Center"  Grid.Column="1" Grid.Row="0"/>
+                <Label Text="BeerId" FontSize="20" HorizontalOptions="Center"  Grid.Column="2" Grid.Row="0"/>
+                <Label Text="Quantity" FontSize="20" HorizontalOptions="Center"  Grid.Column="3" Grid.Row="0"/>
+                <Label Text="Total Price" FontSize="20" HorizontalOptions="Center"  Grid.Column="4" Grid.Row="0"/>
+
+                <Entry x:Name="ClientNameEntry" FontSize="20" HorizontalOptions="Center" BackgroundColor="Snow"  Text="" Grid.Column="0" Grid.Row="1"/>
+                <Label x:Name="WholesalerIdLabel" FontSize="20" HorizontalOptions="Center" Text="" Grid.Column="1" Grid.Row="1"/>
+                <Label x:Name="BeerIdLabel" FontSize="20" HorizontalOptions="Center" IsEnabled="False" Text="" Grid.Column="2" Grid.Row="1"/>
+                <Entry x:Name="QuantityEntry" FontSize="20" HorizontalOptions="Center" BackgroundColor="Snow" Text="1" Grid.Column="3" Grid.Row="1"/>
+                <Label x:Name="TotalPriceLabel" FontSize="20" HorizontalOptions="Center" IsEnabled="False" Text="" Grid.Column="4" Grid.Row="1"/>
+
+                <Button x:Name="ConfirmQuote" Text="Create Quote" FontSize="20" Grid.Column="5" Grid.Row="5" Clicked="OnConfirmQuote"/>
+                <Button x:Name="CancelQuote" Text="Cancel Quote" FontSize="20" Grid.Column="6" Grid.Row="6" Clicked="OnCancelQuote"/>
+            </Grid>
+            <Grid 
+              x:Name="WholesalerInventoryHeaderGrid"   
+              ColumnDefinitions="*, *, *, *, *, *, *"
+              RowDefinitions="*, *"
+              IsVisible="false">
+                
+                <Label Grid.ColumnSpan = "4" TextColor="White" Grid.Row="0" Text="Inventory" FontSize="25" HorizontalOptions="Center" FontAttributes="Bold"/>
+                <Label Grid.Column="0" TextColor="White" Grid.Row="1" Text="ItemId" FontSize="20" HorizontalOptions="Center"/>
+                <Label Grid.Column="1" TextColor="White" Grid.Row="1" Text="WholesalerID" FontSize="20" HorizontalOptions="Center"/>
+                <Label Grid.Column="2" TextColor="White" Grid.Row="1" Text="BeerID" FontSize="20" HorizontalOptions="Center"/>
+                <Label Grid.Column="3" TextColor="white" Grid.Row="1" Text="Quantity" FontSize="20" HorizontalOptions="Center"/>
+            </Grid>
+            <CollectionView 
+                  IsVisible="false"
+                  x:Name="WholesalerInventoryDataGrid">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid ColumnDefinitions="*, *, *, *, *, *, *"
+                            RowDefinitions="50">
+                            <Label Grid.Column="0" TextColor="White" Text="{Binding ItemId}" FontSize="25" HorizontalOptions="Center"/>
+                            <Label Grid.Column="1" TextColor="White" Text="{Binding WholesalerId}" FontSize="25" HorizontalOptions="Center"/>
+                            <Label Grid.Column="2" TextColor="White" Text="{Binding BeerId}" FontSize="25" HorizontalOptions="Center"/>
+                            <Entry Grid.Column="3" TextColor="White" Text="{Binding Quantity}" FontSize="25" HorizontalOptions="Center" TextChanged="OnUpdateInventoryQuantity"/>
+                            <Button
+                                x:Name="InventoryRecordDeleteBtn"
+                                BackgroundColor="white"
+                                TextColor="Black"
+                                FontSize="20"
+                                Text="Delete"
+                                Grid.Column="4"
+                                Clicked="OnInventoryRecordDelete"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <CollectionView 
+                IsVisible="false"
+                x:Name="InventoryForQuoteDataGrid">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid ColumnDefinitions="*, *, *, *, *, *, *"
+                      RowDefinitions="50">
+                            <Label Grid.Column="0" TextColor="White" Text="{Binding ItemId}" FontSize="25" HorizontalOptions="Center"/>
+                            <Label Grid.Column="1" TextColor="White" Text="{Binding WholesalerId}" FontSize="25" HorizontalOptions="Center"/>
+                            <Label Grid.Column="2" TextColor="White" Text="{Binding BeerId}" FontSize="25" HorizontalOptions="Center"/>
+                            <Label Grid.Column="3" TextColor="White" Text="{Binding Quantity}" FontSize="25" HorizontalOptions="Center"/>
+                            <Button
+                            x:Name="InventoryRecordSelectBtn"
+                            BackgroundColor="White"
+                            TextColor="Black"
+                            FontSize="20"
+                            Text="Select"
+                            Grid.Column="4"
+                            Clicked="OnInventoryRecordSelect"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Grid 
+              x:Name="QuoteHeaderGrid"   
+              ColumnDefinitions="*, *, *, *, *, *, *"
+              RowDefinitions="*, *"
+              IsVisible="false">
+                <Label Grid.ColumnSpan = "6" TextColor="White" Grid.Row="0" Text="Quotes issued" FontSize="25" HorizontalOptions="Center" FontAttributes="Bold"/>
+                <Label Grid.Column="0" TextColor="White" Grid.Row="1" Text="QuoteId" FontSize="20" HorizontalOptions="Center"/>
+                <Label Grid.Column="1" TextColor="White" Grid.Row="1" Text="ClientName" FontSize="20" HorizontalOptions="Center"/>
+                <Label Grid.Column="2" TextColor="White" Grid.Row="1" Text="WholesalerId" FontSize="20" HorizontalOptions="Center"/>
+                <Label Grid.Column="3" TextColor="White" Grid.Row="1" Text="BeerId" FontSize="20" HorizontalOptions="Center"/>
+                <Label Grid.Column="4" TextColor="White" Grid.Row="1" Text="Quantity" FontSize="20" HorizontalOptions="Center"/>
+                <Label Grid.Column="5" TextColor="White" Grid.Row="1" Text="TotalPrice" FontSize="20" HorizontalOptions="Center"/>
+            </Grid>
+            <CollectionView 
+                  IsVisible="false"
+                  x:Name="QuoteDataGrid">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid ColumnDefinitions="*, *, *, *, *, *, *"
+                            RowDefinitions="50">
+                            <Label Grid.Column="0" Text="{Binding QuoteId}" TextColor="White" FontSize="20" HorizontalOptions="Center"/>
+                            <Label Grid.Column="1" Text="{Binding ClientName}" TextColor="White" FontSize="20" HorizontalOptions="Center"/>
+                            <Label Grid.Column="2" Text="{Binding WholesalerId}" TextColor="White" FontSize="20" HorizontalOptions="Center"/>
+                            <Label Grid.Column="3" Text="{Binding BeerId}" TextColor="White" FontSize="20" HorizontalOptions="Center"/>
+                            <Label Grid.Column="4" Text="{Binding Quantity}" TextColor="White" FontSize="20" HorizontalOptions="Center"/>
+                            <Label Grid.Column="5" Text="{Binding TotalPrice}" TextColor="White" FontSize="20" HorizontalOptions="Center"/>
+                            <Button
+                                x:Name="QuoteDeleteBtn"
+                                BackgroundColor="White"
+                                TextColor="Black"
+                                Text="Delete"
+                                FontSize="20"
+                                Grid.Column="6"
+                                Clicked="OnQuoteDelete"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
