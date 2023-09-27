@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BreweryMaui.Pages.BreweryUserPage"
+             Title="BreweryUserPage"
+             BackgroundImageSource="beerbackground.jpg">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30">
+            <Grid
+                 ColumnDefinitions="*, *"
+                 RowDefinitions="*, *"
+                 ColumnSpacing="-300"
+                 RowSpacing="20">
+                <Label
+                     Grid.ColumnSpan="2"
+                     Grid.Row="0"
+                     Text="Brewery User Page"
+                     FontAttributes="Bold"
+                     FontSize="30"
+                     VerticalOptions="Center"
+                    TextColor="White"/>
+                <Button
+                    x:Name="LogOut"
+                    IsVisible="true"
+                    Text="Log out"
+                    BackgroundColor="ForestGreen"
+                    HorizontalOptions ="End"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    FontSize="30"
+                    Clicked="OnLogOut" />
+                <Label
+                     Grid.Row="1"
+                     Grid.Column="0"
+                     FontAttributes="Italic"
+                     WidthRequest="300"
+                     FontSize="20"
+                     HorizontalOptions="Start"
+                    TextColor="White"
+                     x:Name="tagBreweryName"/>
+                <Label
+                     Grid.Row="1"
+                     Grid.Column="1"
+                     FontAttributes="Italic"
+                     WidthRequest="300"
+                     FontSize="20"
+                     HorizontalOptions="Start"
+                    TextColor="White"
+                     x:Name="tagBreweryLocation"/>
+                <Line 
+                     Grid.Row="0"
+                     X1="0"
+                     Y1="0"
+                     X2="1000"
+                     Y2="0"
+                     Stroke="white" />
+                <Line 
+                     Grid.Row="1"
+                     X1="0"
+                     Y1="0"
+                     X2="1000"
+                     Y2="0"
+                     Stroke="white" />
+            </Grid>
+
+            <Grid
+                 ColumnDefinitions="*, *, *"
+                 RowDefinitions="*, *, *, *, *"
+                 Padding="30"
+                 RowSpacing="20" >
+                <Label
+                     Grid.Row="0"
+                     Grid.ColumnSpan="2"
+                     TextColor="PaleVioletRed"
+                     x:Name="BreweryWarningLabel"
+                    FontSize="30"
+                     VerticalOptions="Start"
+                     HorizontalOptions="Center"/>
+                <Button
+                     x:Name="updateBreweryBtn"
+                     Text="Update Brewery"
+                     Grid.Row="1"
+                     Grid.Column="0"
+                    FontSize="20"
+                     Clicked="OnBreweryUpdate"/>
+                <Entry
+                     IsVisible="False"
+                     Grid.Row="1"
+                     Grid.Column="1"
+                     HeightRequest="40"
+                     BackgroundColor="White"
+                     FontSize="20"
+                     Text="Brewery Name"
+                     x:Name="UpdateBreweryNameInput"/>
+                <Entry
+                     IsVisible="False"
+                     Grid.Row="1"
+                     Grid.Column="2"
+                     HeightRequest="40"
+                     Text="Brewery Location"
+                     BackgroundColor="White"
+                     FontSize="20"
+                     x:Name="UpdateBreweryLocationInput"/>
+                <Button
+                     x:Name="deleteBreweryBtn"
+                     IsVisible="true"
+                     Text="Delete Brewery"
+                     Grid.Row="2"
+                     Grid.Column="0"
+                    FontSize="20"
+                     Clicked="OnBreweryDelete"/>
+                <Label
+                     Grid.Row="2"
+                     Grid.ColumnSpan="1"
+                     IsVisible="false"
+                     x:Name="deleteBreweryQuestion"
+                     Text="Are you sure you want to delete brewery?"
+                     TextColor="White"
+                     VerticalOptions="Center"
+                     FontSize="20"
+                     HorizontalOptions="Center"/>
+                <Button
+                     x:Name="deleteBreweryYesBtn"
+                     BackgroundColor="Green"
+                     IsVisible="false"
+                     FontSize="20"
+                     Text="Yes"
+                     Grid.Row="2"
+                     Grid.Column="1"
+                     Clicked="OnBreweryConfirmDelete"/>
+                <Button
+                     x:Name="deleteBreweryNoBtn"
+                     BackgroundColor="Red"
+                     IsVisible="false"
+                     FontSize="20"
+                     Text="No"
+                     Grid.Row="2"
+                     Grid.Column="2"
+                     Clicked="OnBreweryAbortDelete"/>
+                <Button
+                    x:Name="CreateBeerBtn"
+                    TextColor="White"
+                    Text="Create a new beer"
+                    FontSize="20"
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    Clicked="OnCreateBeer"/>
+                <Entry
+                     IsVisible="False"
+                     Grid.Row="3"
+                     Grid.Column="1"
+                     HeightRequest="40"
+                     BackgroundColor="white"
+                     FontSize="20"
+                     Text="New Beer Name"
+                     x:Name="BeerNameInput"/>
+                <Entry
+                     IsVisible="False"
+                     Grid.Row="3"
+                     Grid.Column="2"
+                     HeightRequest="40"
+                     BackgroundColor="white"
+                     FontSize="20"
+                     Text="New beer Price"
+                     x:Name="BeerPriceInput"/>
+                <Button
+                     x:Name="showBeers"
+                     IsVisible="true"
+                     Text="Show Beers"
+                     FontSize="20"
+                     Grid.Row="4"
+                     Grid.Column="0"
+                     Clicked="OnShowBeers"/>
+            </Grid>
+
+            <Grid 
+                 x:Name="beersListHeader"   
+                 ColumnDefinitions="*, *, *, *, *, *"
+                 RowDefinitions="50"
+                 IsVisible="false">
+                <Label Grid.Column="0" Text="BeerId" TextColor="White" FontSize="25" HorizontalOptions="Center"/>
+                <Label Grid.Column="1" Text="BeerName" TextColor="White" FontSize="25" HorizontalOptions="Center"/>
+                <Label Grid.Column="2" Text="Price" TextColor="White" FontSize="25" HorizontalOptions="Center"/>
+                <Label Grid.Column="3" Text="BreweryId" TextColor="White" FontSize="25" HorizontalOptions="Center"/>
+            </Grid>
+            <CollectionView 
+                 IsVisible="false"
+                 x:Name="beersListData">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid ColumnDefinitions="*, *, *, *, *, *"
+                           RowDefinitions="50"
+                           ColumnSpacing="50"
+                           RowSpacing="1000">
+
+                            <Label Grid.Column="0" TextColor="White" Text="{Binding BeerId}" FontSize="20" HorizontalOptions="Center" x:Name="{Binding BeerId, StringFormat='LabelBeerId{0:d}'}"/>
+                            <Entry Grid.Column="1" TextColor="white" Text="{Binding BeerName}" FontSize="20" IsEnabled="true" TextChanged="OnEntryChanged" HorizontalOptions="Center"/>
+                            <Entry Grid.Column="2" TextColor="White" Text="{Binding Price}" FontSize="20" IsEnabled="true" TextChanged="OnEntryChanged" HorizontalOptions="Center"/>
+                            <Label Grid.Column="3" TextColor="White" Text="{Binding BreweryId}" FontSize="20" HorizontalOptions="Center"/>
+                            <Button
+                               x:Name="DeleteBtn"
+                               BackgroundColor="white"
+                               TextColor="black"
+                               FontSize="20"
+                               Text="Delete"
+                               Grid.Column="4"
+                               Clicked="OnDeleteBeer"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

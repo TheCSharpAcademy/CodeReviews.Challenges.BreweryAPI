@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BreweryMaui.BreweryMainPage"
+             Title="BreweryMainPage"
+             BackgroundImageSource="beerbackground.jpg">
+
+    <ScrollView>
+        
+        <Grid
+            ColumnDefinitions="*, *, *"
+            RowDefinitions="*, *, *, *, *, *"
+            Padding="40"
+            RowSpacing="20"
+            VerticalOptions="Start">
+
+            <Label
+                Grid.Row="0"
+                Grid.ColumnSpan="3"
+                TextColor="White"
+                FontAttributes="Bold"
+                FontSize="25"
+                Text="Select your brewery or register a new brewery to proceed!"
+                x:Name="MainLabel"
+                HorizontalOptions="Start"/>
+            <Entry
+                Grid.Row="2"
+                Grid.Column="0"
+                HeightRequest="40"
+                Text="Brewery Name"
+                FontSize="20"
+                BackgroundColor="white"
+                x:Name="CreateBreweryNameInput"/>
+            <Entry
+                Grid.Row="2"
+                Grid.Column="1"
+                HeightRequest="40"
+                Text="Brewery Location"
+                FontSize="20"
+                BackgroundColor="white"
+                x:Name="CreateBreweryLocationInput"/>
+            <Button
+                Grid.Row="2"
+                Grid.Column="2"
+                WidthRequest="200"
+                HeightRequest="40"
+                x:Name="CreateBrewery"
+                Text="Register a new Brewery"
+                Clicked="OnBreweryCreate"
+                HorizontalOptions="Center"/>
+            <Label
+                Grid.Row="1"
+                Grid.ColumnSpan="2"
+                TextColor="PaleVioletRed"
+                FontSize="20"
+                x:Name="BreweryWarningLabel"
+                VerticalOptions="Start"
+                HorizontalOptions="Center"/>
+            <Entry
+                Grid.Row="3"
+                Grid.Column="0"
+                HeightRequest="40"
+                Text="Brewery Name"
+                FontSize="20"
+                BackgroundColor="white"
+                x:Name="SelectBreweryByNameInput"/>
+            <Button
+                Grid.Row="3"
+                Grid.Column="2"
+                HeightRequest="40"
+                WidthRequest="200"
+                x:Name="SelectBrewery"
+                Text="Select your Brewery"
+                Clicked="OnBrewerySelect"
+                HorizontalOptions="Center"/>
+
+            <Button
+                Grid.Row="4"
+                Grid.Column="0"
+                HorizontalOptions="Start"
+                x:Name="ShowBreweriesButton"
+                Text="Show Breweries"
+                HeightRequest="40"
+                Clicked="OnShowBreweries"/>
+
+            <ListView
+                Grid.Row="5"
+                Grid.Column="0"
+                x:Name="BreweriesListView"
+                ItemsSource="{Binding Breweries}"
+                IsVisible="False"
+                BackgroundColor="White">
+                <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding BreweryName}"/>
+                </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </ScrollView>
+</ContentPage>
