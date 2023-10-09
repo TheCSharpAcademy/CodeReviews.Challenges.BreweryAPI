@@ -121,6 +121,11 @@ namespace BreweryAPI.Controllers
 				return NotFound("Brewery not found.");
 			}
 
+			var existingBeer = await _context.Beers.FirstOrDefaultAsync(b => b.Name == beerModel.Name && b.BrewerId == beerModel.BrewerId);
+
+			if (existingBeer != null)
+				return Conflict("A beer with this name already exists for this brewer");
+
 			beerModel.Brewer = existingBrewery;
 
 			_context.Beers.Add(beerModel);
