@@ -30,3 +30,14 @@ It's also possible to see one specific sale by using the GET/Sales/{id} method<b
 Quotes only has a single POST method that will be used by thecustomer<br>
 Customers can send a orderlist, containing one or more diffrent beers and there quantity's, to there desired wholesaler.<br>
 The POST method will then check if the selected wholesaler has the stock to fullfill this order. If so, a summuary with all products and total price is calculated and returned. Discounts are also applied when requirements are met. If the wholesaler doesn't have enough stock or if there is something wrong with the orderlist the customer gets a corresponding message back.<br>
+<br>
+<h3>How did I experience this challenge</h3>
+This was only the second API I created, and this one was far more complex than the first one. So I learned alot of new stuff from it.<br>
+I started this challenge by first thinking about how many and which tables I would need and then draw them out. I needed a model for beer, brewery, wholesaler, sale. Those were easy, the tables for orders and quotes were a bit more tricky as they contained relationships with multiple other models. I even had to adjust them a bit when I was actually working with them.<br>
+Once my models were finished I started the context page so I could make a connection to my database. This also took some time to figure out since I never used Ensure Create/ Ensure Delete before. But again with some Googling and some chatGPT I got it up and running.<br>
+Once my database was running it was time to seed it with data, again something I hadn't done before. So with some Googling I found out an example of putting my seed data into the context page. So I did, altough now I'm writing this I'm not so sure anymore this is the right place for it. <br>
+Now that my database was running and filled with data is was time to work on the different CRUD commands. I first finished the Beer one and then added Sales and Quotes as last. The Beer and Sales API commands were pretty straight forward and I experienced little to no problems creating them. Quotes was a bit harder to implement since there were some more conditions to be accounted for. You had to check the stock of the wholesaler, get the prices to be displayed, the discounts to be calculated, and so on. But I managed. :)<br>
+<br>
+One of the extra challenges was to add Unit Tests to the project and create an front-end, but at the time I made the API I wasn't far enough in my progress to do these. The unit tests chapter is the next one coming up so perhaps I add these later on.<br>
+
+
