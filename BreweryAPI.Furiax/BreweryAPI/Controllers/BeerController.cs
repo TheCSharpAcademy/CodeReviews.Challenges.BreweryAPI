@@ -17,7 +17,7 @@ namespace BreweryAPI.Controllers
 
 		// GET: api/BeersByBrewer
 		[HttpGet("BeersByBrewer/{brewerId}")]
-		public async Task<ActionResult<IEnumerable<BeerModel>>> GetBeersByBrewer(int brewerId)
+        public async Task<ActionResult<IEnumerable<BeerModel>>> GetBeersByBrewer(int brewerId)
 		{
 			if (_context.Beers == null)
 			{
@@ -38,7 +38,7 @@ namespace BreweryAPI.Controllers
 
 		// GET: api/Beer
 		[HttpGet]
-		public async Task<ActionResult<IEnumerable<BeerModel>>> GetBeers()
+        public async Task<ActionResult<IEnumerable<BeerModel>>> GetBeers()
 		{
 			if (_context.Beers == null)
 			{
@@ -50,7 +50,7 @@ namespace BreweryAPI.Controllers
 
 		// GET: api/Beer/5
 		[HttpGet("{id}")]
-		public async Task<ActionResult<BeerModel>> GetBeerModel(int id)
+        public async Task<ActionResult<BeerModel>> GetBeerModel(int id)
 		{
 			if (_context.Beers == null)
 			{

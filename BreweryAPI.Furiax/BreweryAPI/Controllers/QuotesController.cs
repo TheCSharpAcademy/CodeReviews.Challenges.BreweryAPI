@@ -16,27 +16,23 @@ namespace BreweryAPI.Controllers
 		}
 
 		// POST: api/Quotes
-		// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
 		[HttpPost]
-		public async Task<ActionResult<OrderModel>> RequestQuote(QuoteModel quoteModel)
+        public async Task<ActionResult<OrderModel>> RequestQuote(QuoteModel quoteModel)
 		{
 
 			try
 			{
-				//check if model isnt empty
 				if (quoteModel == null)
 				{
 					return BadRequest("Order cannot be empty");
 				}
 
-				//check if the wholesaler exist
 				var wholesalerExisting = await _context.Wholesalers.FindAsync(quoteModel.WholeSalerId);
 				if (wholesalerExisting == null)
 				{
 					return NotFound("Wholesaler doesn't exist");
 				}
-
-				//check for duplicates
+			
 				if(quoteModel.Orders.GroupBy(ord => ord.BeerId).Any(cnt => cnt.Count() >1))
 				{
 					return BadRequest("There can't be any duplicates in the order");

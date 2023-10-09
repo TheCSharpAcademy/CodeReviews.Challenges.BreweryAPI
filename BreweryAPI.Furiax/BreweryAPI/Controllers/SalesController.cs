@@ -53,7 +53,6 @@ namespace BreweryAPI.Controllers
 		}
 
 		// PUT: api/Sales/5
-		// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
 		[HttpPut("{id}")]
 		public async Task<IActionResult> PutSaleModel(int id, SaleModel updatedSaleModel)
 		{
@@ -102,7 +101,6 @@ namespace BreweryAPI.Controllers
 		}
 
 		// POST: api/Sales
-		// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
 		[HttpPost]
 		public async Task<ActionResult<SaleModel>> PostSaleModel(SaleModel saleModel)
 		{
