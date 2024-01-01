@@ -1,0 +1,49 @@
+<form (ngSubmit)="onSubmit()" #brewForm="ngForm" class="example-form">
+
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input
+        id="name" 
+        #name="ngModel" 
+        required="true" 
+        matInput 
+        placeholder="" 
+        name="name" 
+        [(ngModel)]="beer.name" 
+        value="">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Flavour</mat-label>
+        <input id="flavour" required="true" matInput placeholder="" name="flavour" [(ngModel)]="beer.flavour" value="">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Age</mat-label>
+        <input id="age" required="true" matInput placeholder="" name="age" [(ngModel)]="beer.age" value="">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Price</mat-label>
+        <input id="price" required="true" matInput placeholder="" name="price" type="number" [(ngModel)]="beer.breweryPrice" value="">
+    </mat-form-field>
+  
+    <div class="form-group">
+        <mat-form-field>
+            <mat-label>Brewery</mat-label>
+            <mat-select id="brewery" [(ngModel)]="beer.breweryId" name="breweryId">
+              @for (brewery of breweries; track brewery) {
+                <mat-option [value]="brewery.id">{{brewery.name}}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+      </div>
+
+    <button [hidden]="beer.id != 0" mat-raised-button color="primary"
+      type="submit"
+      [disabled]="!brewForm.form.valid || isButtonDisabled">Create</button>
+
+      <button [hidden]="this.beer.id == 0" mat-raised-button color="primary"
+      type="submit"
+      [disabled]="!brewForm.form.valid || isButtonDisabled">Update</button>
+</form>

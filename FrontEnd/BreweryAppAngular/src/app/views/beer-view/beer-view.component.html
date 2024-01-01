@@ -1,0 +1,51 @@
+<section>
+<table mat-table [dataSource]="beers" class="mat-elevation-z8 demo-table">
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> Id </th>
+        <td mat-cell *matCellDef="let beer"> {{beer.id}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let beer"> {{beer.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="flavour">
+        <th mat-header-cell *matHeaderCellDef> Flavour </th>
+        <td mat-cell *matCellDef="let beer"> {{beer.flavour}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="age">
+        <th mat-header-cell *matHeaderCellDef> Age </th>
+        <td mat-cell *matCellDef="let beer"> {{beer.age}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="breweryPrice">
+        <th mat-header-cell *matHeaderCellDef> Price </th>
+        <td mat-cell *matCellDef="let beer"> {{beer.breweryPrice}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="brewery">
+        <th mat-header-cell *matHeaderCellDef> Brewery </th>
+        <td mat-cell *matCellDef="let beer"> {{beer.brewery.name}} </td>
+      </ng-container>
+
+
+      <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr 
+    mat-row 
+    (click)="clickedBeer = row"
+    [class.demo-row-is-clicked]="clickedBeer == row"
+    *matRowDef="let row; columns: columnsToDisplay;"></tr>
+  </table>
+</section>
+<br>
+<mat-divider></mat-divider>
+<br>
+<section class="buttonsSection">
+  <div class="buttonsDiv">
+  <button mat-raised-button color="primary" routerLink="Add">New</button>
+  <button mat-raised-button color="accent" (click)="editItem()">Edit</button>
+  <button mat-raised-button color="warn" (click)="deleteBeer()">Remove</button>
+</div>
+</section>

@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34309.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{AE5A2F5A-7221-41C7-AA9E-B6EB114B7D6F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BreweryApi", "Brewery\BreweryApi.csproj", "{11495423-D929-4C77-B8A8-6652272B168E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BreweryTests", "Tests\BreweryTests\BreweryTests.csproj", "{0AC52636-D57E-46C6-93AB-7B15105D90CF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{11495423-D929-4C77-B8A8-6652272B168E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11495423-D929-4C77-B8A8-6652272B168E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11495423-D929-4C77-B8A8-6652272B168E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11495423-D929-4C77-B8A8-6652272B168E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AC52636-D57E-46C6-93AB-7B15105D90CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AC52636-D57E-46C6-93AB-7B15105D90CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AC52636-D57E-46C6-93AB-7B15105D90CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AC52636-D57E-46C6-93AB-7B15105D90CF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BFB29EB5-6435-45C3-9D2E-7BF657DF087F}
+	EndGlobalSection
+EndGlobal

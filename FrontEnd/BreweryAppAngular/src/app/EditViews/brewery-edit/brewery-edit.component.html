@@ -1,0 +1,25 @@
+<form (ngSubmit)="onSubmit()" #breweryForm="ngForm" class="example-form">
+
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input 
+        #name="ngModel" 
+        id="name"
+        required="true" 
+        matInput 
+        placeholder="" 
+        name="name" 
+        [(ngModel)]="brewery.name" 
+        value=""
+        >
+    </mat-form-field>
+
+
+    <button [hidden]="brewery.id != 0" mat-raised-button color="primary"
+      type="submit"
+      [disabled]="!breweryForm.form.valid || isButtonDisabled">Create</button>
+
+      <button [hidden]="this.brewery.id == 0" mat-raised-button color="primary"
+      type="submit"
+      [disabled]="!breweryForm.form.valid || isButtonDisabled">Update</button>
+</form>
