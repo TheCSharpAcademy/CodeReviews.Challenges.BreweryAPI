@@ -1,0 +1,43 @@
+<form (ngSubmit)="onSubmit()" #brewForm="ngForm" class="example-form">
+
+    <mat-form-field>
+      <mat-label>Quantity</mat-label>
+      <input
+        id="quantity" 
+        #name="ngModel" 
+        required="true" 
+        matInput
+        type="number" 
+        placeholder="" 
+        name="quantity" 
+        [(ngModel)]="sale.quantity" 
+        value="">
+    </mat-form-field>
+
+    <div class="form-group">
+        <mat-form-field>
+            <mat-label>Beer</mat-label>
+            <mat-select id="beer" [(ngModel)]="sale.beerId" name="beerId">
+              @for (beer of beers; track beer) {
+                <mat-option [value]="beer.id">{{beer.name}}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+      </div>
+
+    <div class="form-group">
+        <mat-form-field>
+            <mat-label>Wholesaler</mat-label>
+            <mat-select id="wholesaler" [(ngModel)]="sale.wholesalerId" name="wholesalerId">
+              @for (wholesaler of wholesalers; track wholesalers) {
+                <mat-option [value]="wholesaler.id">{{wholesaler.name}}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+      </div>
+
+    <button mat-raised-button color="primary"
+      [disabled]="!brewForm.form.valid || isButtonDisabled">Create</button>
+
+      <button type="button" mat-raised-button color="secondary" (click)="getQuote()">Quote</button>
+</form>

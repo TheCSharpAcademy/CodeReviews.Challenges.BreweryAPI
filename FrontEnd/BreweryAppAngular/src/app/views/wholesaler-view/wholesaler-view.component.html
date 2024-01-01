@@ -1,0 +1,43 @@
+<section>
+    <table mat-table [dataSource]="wholesalers" class="mat-elevation-z8 demo-table">
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> Id </th>
+            <td mat-cell *matCellDef="let wholesaler"> {{wholesaler.id}} </td>
+          </ng-container>
+    
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let wholesaler"> {{wholesaler.name}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="stock">
+            <th mat-header-cell *matHeaderCellDef> Stock Limit </th>
+            <td mat-cell *matCellDef="let wholesaler"> {{getCurrentStock(wholesaler)}}/{{wholesaler.stockLimit}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="beers">
+            <th mat-header-cell *matHeaderCellDef> Beers sold </th>
+            <td mat-cell *matCellDef="let wholesaler"> {{wholesaler.allowedBeersNames}} </td>
+          </ng-container>
+    
+          <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+        <tr 
+        mat-row 
+        (click)="clickedWholesaler = row"
+        [class.demo-row-is-clicked]="clickedWholesaler == row"
+        *matRowDef="let row; columns: columnsToDisplay;"></tr>
+      </table>
+    </section>
+    <br>
+    <mat-divider></mat-divider>
+    <br>
+    <section class="buttonsSection">
+      <div class="buttonsDiv">
+        <button mat-raised-button color="primary" routerLink="Add">New</button>
+        <button mat-raised-button color="accent" (click)="editItem()">Edit</button>
+        <button mat-raised-button color="warn" (click)="deleteBrewery()">Remove</button>
+        <button mat-raised-button color="accent" (click)="checkStock()">Check Stock</button>
+    </div>
+    </section>
+      
+    

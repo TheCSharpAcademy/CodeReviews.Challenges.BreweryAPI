@@ -1,0 +1,7 @@
+<h1 mat-dialog-title>Current Stock</h1>
+
+<ul>
+    @for (stock of data; track stock) {
+        <li>{{stock.beerName}} - {{stock.quantity}}</li>
+    }
+</ul>

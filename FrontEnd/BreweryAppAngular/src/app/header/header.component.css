@@ -1,0 +1,8 @@
+.spacer {
+    flex: 0.09;
+  }
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
