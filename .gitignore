@@ -13,6 +13,8 @@
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
+FrontEnd\BreweryAppAngular\.angular\cache\
+
 # Mono auto generated files
 mono_crash.*
 
@@ -475,3 +477,4 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+/FrontEnd/BreweryAppAngular/.angular/cache/17.0.6
